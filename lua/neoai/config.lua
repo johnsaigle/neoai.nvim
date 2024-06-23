@@ -18,10 +18,20 @@ M.get_defaults = function()
         },
         models = {
             {
-                name = "openai",
-                model = "gpt-3.5-turbo",
+                name = "janai", 
+                model = "llama3-8b-instruct", -- update to whatever is installed in JanAI
                 params = nil,
             },
+            {
+                name = "janai", 
+                model = "llama3-8b-instruct", -- update to whatever is installed in JanAI
+                params = nil,
+            },
+            -- {
+            --     name = "openai",
+            --     model = "gpt-3.5-turbo",
+            --     params = nil,
+            -- },
         },
         register_output = {
             ["g"] = function(output)
@@ -68,8 +78,10 @@ M.get_defaults = function()
                     end
                     local msg = M.options.open_ai.api_key.env
                         .. " environment variable is not set, and open_api_key.value is empty"
-                    logger.error(msg)
-                    error(msg)
+                    logger.warning("open_api_key is not set")
+                    return ""
+                    -- logger.error(msg)
+                    -- error(msg)
                 end,
             },
         },
