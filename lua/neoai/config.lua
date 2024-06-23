@@ -124,7 +124,7 @@ end
 ---@field submit string The key binding to submit the input
 
 ---@class Model_Options
----@field name "openai" The name of the model provider
+---@field name "openai" | "janai" The name of the model provider
 ---@field model string | string[] The name of the model to use or list of model names to use
 ---@field params table<string, string> | nil Params to pass into the model(s) or nil is none.
 
