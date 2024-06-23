@@ -22,11 +22,6 @@ M.get_defaults = function()
                 model = "llama3-8b-instruct", -- update to whatever is installed in JanAI
                 params = nil,
             },
-            {
-                name = "janai", 
-                model = "llama3-8b-instruct", -- update to whatever is installed in JanAI
-                params = nil,
-            },
             -- {
             --     name = "openai",
             --     model = "gpt-3.5-turbo",
@@ -53,6 +48,9 @@ M.get_defaults = function()
         mappings = {
             ["select_up"] = "<C-k>",
             ["select_down"] = "<C-j>",
+        },
+        janai = {
+            base_url = "http://localhost:1337",
         },
         open_ai = {
             api_key = {
@@ -148,6 +146,9 @@ end
 ---@class Open_AI_Options
 ---@field api_key Open_AI_Key_Options The open api key options
 
+---@class Jan_AI_Options
+---@field base_url string The base_url for JanAI queries
+
 ---@class Open_AI_Key_Options
 ---@field env string The environment variable to get the open api key from
 ---@field value string | nil The value of the open api key to use, if nil then use the environment variable
@@ -162,6 +163,7 @@ end
 ---@field prompts Prompt_Options The custom prompt options
 ---@field open_api_key_env string The environment variable that contains the openai api key
 ---@field open_ai Open_AI_Options The open api key options
+---@field janai Jan_AI_Options The JanAI options
 ---@field mappings table<"select_up" | "select_down", nil|string|string[]> A table of actions with it's mapping(s)
 ---@field shortcuts Shortcut[] Array of shortcuts
 M.options = {}

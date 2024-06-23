@@ -52,7 +52,7 @@ end
 ---@param on_stdout_chunk fun(chunk: string) Function to call whenever a stdout chunk occurs
 ---@param on_complete fun(err?: string, output?: string) Function to call when model has finished
 M.send_to_model = function(chat_history, on_stdout_chunk, on_complete)
-    local api_key = config.options.open_ai.api_key.get()
+    local base_url = config.options.janai.base_url
 
     local data = {
         model = chat_history.model,
@@ -67,8 +67,7 @@ M.send_to_model = function(chat_history, on_stdout_chunk, on_complete)
         "--silent",
         "--show-error",
         "--no-buffer",
-        -- "https://api.openai.com/v1/chat/completions",
-        "http://localhost:1337/v1/chat/completions", -- default localhost for JanAI
+        base_url .. "/v1/chat/completions",
         "-H",
         "Content-Type: application/json",
         -- "-H",
